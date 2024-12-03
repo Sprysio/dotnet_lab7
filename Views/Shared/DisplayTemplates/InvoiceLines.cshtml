@@ -1,0 +1,33 @@
+@model IEnumerable<lab7.Models.InvoiceLine>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Track.TrackId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Track.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Track.UnitPrice)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) 
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Track.TrackId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Track.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Track.UnitPrice)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

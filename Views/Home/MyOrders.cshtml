@@ -1,0 +1,59 @@
+@model IEnumerable<lab7.Models.Invoice>
+
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>My Orders</title>
+</head>
+<body>
+    <div class="container">
+        <h2>My Orders</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.InvoiceId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.InvoiceDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.BillingAddress)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Total)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model) {
+                    <tr>
+                        <td>
+                            <a asp-action="OrderDetails" asp-route-id="@item.InvoiceId">@item.InvoiceId</a>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.InvoiceDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item, "Address")
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Total)
+                        </td>
+                        <td>
+                            <a asp-action="OrderDetails" asp-route-id="@item.InvoiceId">Order Details</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

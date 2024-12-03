@@ -1,0 +1,61 @@
+@model lab7.Models.Invoice
+
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Order Details</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Order Details</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <dl class="row">
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.InvoiceId)
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.InvoiceId)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.InvoiceDate)
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.InvoiceDate)
+                    </dd>
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.BillingAddress)
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model, "Address")
+                    </dd>
+                    <dt class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.Total)
+                    </dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.Total)
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <h3>Ordered Songs</h3>
+        @if (Model.InvoiceLines.Any())
+        {
+            @Html.DisplayFor(model => model.InvoiceLines, "InvoiceLines")
+        }
+        else
+        {
+            <p>No ordered songs available.</p>
+        }
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </div>
+</body>
+</html>
